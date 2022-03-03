@@ -20,8 +20,8 @@ Clone the code from this repository into your IDE, grabbing data files and the f
 
 > What is the [time complexity](https://en.wikipedia.org/wiki/Time_complexity) for determining if a strike has occurred for a particular asset?
 
-answer here
+answer #1 here
 
 > If we put this code into production, but found it too slow, or it needed to scale to many more users or more frequent strikes, what are the first things you would think of to speed it up?
 
-answer here
+answer #2 here
