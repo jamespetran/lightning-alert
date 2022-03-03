@@ -1,10 +1,10 @@
 import json
-import math
+from pyquadkey2 import quadkey
 
 
 def main():
     # init location_list as empty list type (var needs to be in this scope)
-    location_list = []
+    asset_list = []
 
     # init location dictionary
     location_dict = {}
@@ -12,16 +12,25 @@ def main():
     # init alerted dictionary
     alerted_asset = {}
 
-    # assign json file of list of assets to location_list
-    with open('./data/assets.json') as file:
-        location_list = json.load(file)
-        # convert list to dict, with key = quadKey and value = `${assetOwner}:${assetName}` to reduce time complexity from O(n^2) to O(n)
-        # for location in location_list:
+    map_zoom = 12
+
+    def issue_alert(owner, name, quad_key):
+        if quad_key in alerted_asset.keys():
+            return
+
         
 
+    # assign json file of list of assets to location_list
+    with open('./data/assets.json') as file:
+        asset_list = json.load(file)
+        for asset in asset_list:
+            # print(asset["quadKey"])
+            pass
+        # convert list to dict, with key = quadKey and value = `${assetOwner}:${assetName}` to reduce time complexity from O(n^2) to O(n)
+        # for asset in asset_list:
 
     # opens the file
-    with open ('./data/lightning.json') as f:
+    with open('./data/lightning.json') as f:
         # for each separate line in file f:
         for json_obj in f:
             lightning_strike = json.loads(json_obj)
@@ -29,18 +38,14 @@ def main():
             # and the for loop should go onto the next value of lightning_strike
             if lightning_strike['flashType'] == 9:
                 break
-
-            # convert lat/long to quadKey
-            # from https://docs.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system
-            x = (lightning_strike["longitude"] + 180) / 360
-            sin_long = math.sin(x)
-
-            # iterate through the list of assets to see if lightning.quadKey == asset.quadKey
-
-            # if yes, then
-    
-    # for lightning_strike in lightning_list:
-    #     print(lightning_strike['receivedTime'])
+            # assign lat, long to x, y
+            x, y = lightning_strike['latitude'], lightning_strike['longitude']
+            # calculate quadkey for given lat/long
+            lightning_qk = quadkey.from_geo((x, y), map_zoom)
+            # iterate through asset list to compare quadkeys
+            for asset in asset_list:
+                if (asset['quadKey'] == lightning_qk):
+                    issue_alert(asset["assetOwner"], asset["assetName"], lightning_qk)
 
 
 main()

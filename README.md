@@ -16,6 +16,9 @@ For lightning strikes the following rules apply:
 
 Clone the code from this repository into your IDE, grabbing data files and the filepaths. This program was created and tested with Python 3.9.10 64-bit. You will need python3 installed to be able to be guaranteed to run this code correctly.
 
+## required libraries:
+- [python quadkey](https://github.com/CartoDB/python-quadkey) (install with pip)
+
 # Questions to answer:
 
 > What is the [time complexity](https://en.wikipedia.org/wiki/Time_complexity) for determining if a strike has occurred for a particular asset?
