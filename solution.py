@@ -47,7 +47,7 @@ def main():
                 if (asset['quadKey'] == str(lightning_qk)):
                     # assign to easier to use vars
                     owner, name, location = asset["assetOwner"], asset["assetName"], asset['quadKey']
-                    # check if this quadkey has had a prev alert
+                    # check if this quadkey has had a prev alert (check if the quadkey has previously been stored in the alerted_asset dict)
                     if location in alerted_asset:
                         # then skip issuing an alert and continue onto the next asset in asset_list
                         continue
