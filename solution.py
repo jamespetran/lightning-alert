@@ -18,12 +18,15 @@ def main():
     # assign json file of list of assets to asset_list
     with open('./data/assets.json') as file:
         asset_list = json.load(file)
-        for asset in asset_list:
-            # print(asset["quadKey"])
-            pass
         # convert list to dict, with key == quadKey and value == `${assetOwner}:${assetName}` to reduce time 
         # complexity from O(n^2) to O(n + m) where n == lightning list and m == asset list => simplifies to O(n)
-        # for asset in asset_list: 
+        for asset in asset_list:
+            # print(asset["quadKey"])
+            owner, name, location = asset["assetOwner"], asset["assetName"], asset['quadKey']
+            # store asset details so the alert can go out as required in instructions
+            ## ``` lightning alert for <assetOwner>:<assetName> ```
+            location_dict.location = str(owner) + ":" + str(name)
+            
 
     # opens the lightning strike file as f
     with open('./data/lightning.json') as f:
@@ -53,7 +56,7 @@ def main():
                         continue
                     else:
                         # add this quadkey to the alerted_asset dictionary
-                        alerted_asset[location] = str(owner) + " : " + str(name)
+                        alerted_asset[location] = str(owner) + ":" + str(name)
                     # alerted_asset[str]
                     print("alert in " + owner + ":" + name)
 
