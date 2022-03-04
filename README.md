@@ -30,3 +30,7 @@ answer #1 here
 > If we put this code into production, but found it too slow, or it needed to scale to many more users or more frequent strikes, what are the first things you would think of to speed it up?
 
 answer #2 here
+
+## testing
+
+using https://text-compare.com/, the output log of the O(n^2) code is exactly same as the O(n) code. unknown what exactly the output _should_ be, so unable to create unit tests.
