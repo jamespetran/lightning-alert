@@ -3,8 +3,9 @@ from pyquadkey2 import quadkey
 
 
 def main():
+    # removed in refactoring
     # init location_list as empty list type (var needs to be in this scope)
-    asset_list = []
+    # asset_list = []
 
     # init location dictionary
     asset_dict = {}
@@ -17,6 +18,7 @@ def main():
 
     # assign json file of list of assets to asset_list
     with open('./data/assets.json') as file:
+        # removed in refactoring
         # asset_list = json.load(file)
         # convert list to dict, with key == quadKey and value == `${assetOwner}:${assetName}` to reduce time
         # complexity from O(n^2) to O(n + m) where n == lightning list and m == asset list => simplifies to O(n)
@@ -24,7 +26,7 @@ def main():
             # print(asset["quadKey"])
             owner, name, location = asset["assetOwner"], asset["assetName"], asset['quadKey']
             # store asset details so the alert can go out as required in instructions
-            # ``` lightning alert for <assetOwner>:<assetName> ```
+            ##### ``` lightning alert for <assetOwner>:<assetName> ```
             asset_dict[location] = str(owner) + ":" + str(name)
             # print(asset_dict[location])
 
@@ -63,6 +65,10 @@ def main():
                 print("alert in "+ str(asset_dict[lightning_qk]))
     
 
+    ###### The code below can be removed for production / deployment,
+    # but it shows what I did initially to solve with a nested for...: loop
+    # before I refactored to use a dictionary
+            
             # will refactor this above 👆
             # loop through asset list to compare quadkeys to check if a match
             # for asset in asset_list:
@@ -80,6 +86,5 @@ def main():
             #             alerted_asset[location] = str(owner) + ":" + str(name)
             #         # alerted_asset[str]
             #         print("alert in " + owner + ":" + name)
-
 
 main()
