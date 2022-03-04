@@ -25,11 +25,10 @@ When you're ready to run the code, enter the command `python3 solution.py` in yo
 
 > What is the [time complexity](https://en.wikipedia.org/wiki/Time_complexity) for determining if a strike has occurred for a particular asset?
 
-answer #1 here
-
+The time complexity of my final code is O(2n) which simplifies to O(n), where n = lightning list + asset list
 > If we put this code into production, but found it too slow, or it needed to scale to many more users or more frequent strikes, what are the first things you would think of to speed it up?
 
-answer #2 here
+Parallelizing based on geographic hemispheres, quadrants or filtering based on lat/long values. A program could route each lightning strike value to a different VM  or process based on its geographical location, only needing to check against certain assets that are located in that part of the world. 
 
 ## testing
 
