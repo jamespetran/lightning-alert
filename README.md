@@ -16,8 +16,10 @@ For lightning strikes the following rules apply:
 
 Clone the code from this repository into your IDE, grabbing data files and the filepaths. This program was created and tested with Python 3.9.10 64-bit. You will need python3 installed to be able to be guaranteed to run this code correctly.
 
+When you're ready to run the code, enter the command `python3 solution.py` in your terminal in the directory where you cloned the repo to run the app.
+
 ## required libraries:
-- [python quadkey](https://github.com/CartoDB/python-quadkey) (install with pip)
+- [pyquadkey2](https://github.com/muety/pyquadkey2) (install with pip)
 
 # Questions to answer:
 
